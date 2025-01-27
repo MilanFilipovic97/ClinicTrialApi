@@ -1,0 +1,8 @@
+{
+  "trialId": "CT12345",
+  "title": "Phase 2 Clinical Trial for Drug X",
+  "startDate": "2025-01-01",
+  "endDate": "2025-12-31",
+  "participants": 100,
+  "status": "Ongoing"
+}
