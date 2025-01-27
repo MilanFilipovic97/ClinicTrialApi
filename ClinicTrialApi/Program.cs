@@ -1,4 +1,5 @@
 using ClinicTrialApi.Data;
+using ClinicTrialApi.Helper;
 using ClinicTrialApi.Interfaces;
 using ClinicTrialApi.Services;
 using FluentValidation;
@@ -17,7 +18,7 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
-
+builder.Services.AddScoped<IResourceHelper, ResourceHelper>();
 builder.Services.AddScoped<IClinicalTrialService, ClinicalTrialService>();
 
 builder.Services.AddFluentValidationAutoValidation()
@@ -28,12 +29,14 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-
-// Apply migrations at startup
-using (var scope = app.Services.CreateScope())
+// Apply migrations only if not in a test environment
+if (!app.Environment.EnvironmentName.Equals("Testing", StringComparison.OrdinalIgnoreCase))
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-    dbContext.Database.Migrate();
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+        dbContext.Database.Migrate();
+    }
 }
 
 // Configure the HTTP request pipeline.
@@ -50,3 +53,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }

@@ -53,17 +53,6 @@ namespace ClinicTrialApi.Controllers
             }
         }
 
-        /*private ClinicalTrial TransformData(ClinicalTrial data)
-        {
-            // Example business rule: You might want to update or add additional properties here
-            data.StartDate = DateTime.Parse(data.StartDate).ToString("yyyy-MM-dd");
-            data.EndDate = DateTime.Parse(data.EndDate).ToString("yyyy-MM-dd");
-
-            // You can add other transformation logic here based on your specific requirements
-
-            return data;
-        }*/
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetClinicTrial(int id, CancellationToken token)
         {
@@ -74,7 +63,7 @@ namespace ClinicTrialApi.Controllers
             try
             {
                 var result = await _clinicalTrialService.GetClinicTrialByIdAsync(id, token);
-                return result is not null ? Ok(result) : NotFound();
+                return result is not null ? Ok(result) : NoContent();
             }
             catch (Exception ex) 
             {

@@ -1,10 +1,11 @@
-﻿using System.Reflection;
+﻿using ClinicTrialApi.Interfaces;
+using System.Reflection;
 
 namespace ClinicTrialApi.Helper
 {
-    public class ResourceHelper
+    public class ResourceHelper : IResourceHelper
     {
-        public static string GetEmbeddedResource(string resourceName)
+        public string GetEmbeddedResource(string resourceName)
         {
             var assembly = Assembly.GetExecutingAssembly();
             var fullResourceName = assembly.GetManifestResourceNames()

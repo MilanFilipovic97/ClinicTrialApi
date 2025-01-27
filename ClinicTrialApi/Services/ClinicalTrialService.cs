@@ -1,5 +1,4 @@
 ﻿using ClinicTrialApi.Data;
-using ClinicTrialApi.Helper;
 using ClinicTrialApi.Interfaces;
 using ClinicTrialApi.Models;
 using Microsoft.EntityFrameworkCore;
@@ -12,18 +11,21 @@ namespace ClinicTrialApi.Services
     {
         private readonly DataContext _context;
         private readonly ILogger<ClinicalTrialService> _logger;
+        private readonly IResourceHelper _resourceHelper;
 
         public ClinicalTrialService(
             DataContext context,
-            ILogger<ClinicalTrialService> logger)
+            ILogger<ClinicalTrialService> logger,
+            IResourceHelper resourceHelper)
         {
             _context = context;
             _logger = logger;
+            _resourceHelper = resourceHelper;
         }
 
         public bool ValidateJson(string uploadedJson)
         {
-            var validationSchema = ResourceHelper.GetEmbeddedResource("ClinicalTrialSchema.json");
+            var validationSchema = _resourceHelper.GetEmbeddedResource("ClinicalTrialSchema.json");
             var schema = JSchema.Parse(validationSchema);
 
             var uploadSchema = JObject.Parse(uploadedJson);
@@ -67,7 +69,7 @@ namespace ClinicTrialApi.Services
 
         public async Task<ClinicalTrial?> GetClinicTrialByIdAsync(int id, CancellationToken token)
         {
-            return await _context.ClinicalTrials.FindAsync(id, token);
+            return await _context.ClinicalTrials.FirstOrDefaultAsync(x => x.Id == id, token);
         }
 
         public async Task<IEnumerable<ClinicalTrial>> FilterByStatusAsync(TrialStatus status, CancellationToken token)

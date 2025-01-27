@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClinicTrialApi", "ClinicTri
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3C269E3E-E84D-4D4D-A919-20B682FC5D4A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicTrialApi.Tests", "..\ClinicTrialApi.Tests\ClinicTrialApi.Tests.csproj", "{38C73E44-1D94-44E2-990B-3FF824DA7C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicTrialApi.IntegrationTests", "..\ClinicTrialApi.IntegrationTests\ClinicTrialApi.IntegrationTests.csproj", "{455C6FFD-FF13-43D0-93BE-A872C54534C1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{3C269E3E-E84D-4D4D-A919-20B682FC5D4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C269E3E-E84D-4D4D-A919-20B682FC5D4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C269E3E-E84D-4D4D-A919-20B682FC5D4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38C73E44-1D94-44E2-990B-3FF824DA7C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38C73E44-1D94-44E2-990B-3FF824DA7C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38C73E44-1D94-44E2-990B-3FF824DA7C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38C73E44-1D94-44E2-990B-3FF824DA7C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{455C6FFD-FF13-43D0-93BE-A872C54534C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{455C6FFD-FF13-43D0-93BE-A872C54534C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{455C6FFD-FF13-43D0-93BE-A872C54534C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{455C6FFD-FF13-43D0-93BE-A872C54534C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
